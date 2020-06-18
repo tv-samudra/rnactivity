@@ -2,14 +2,10 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  StatusBar,
   View,
   Image,
   ImageBackground,
 } from "react-native";
-import ReadMore from "react-native-read-more-text";
-
-let statusHeight = StatusBar.currentHeight;
 
 export default function Post(props) {
   let {
@@ -20,29 +16,10 @@ export default function Post(props) {
       imageUri,
       description,
       likes,
-      comment,
+      comments,
       views,
     },
   } = props;
-
-  let _renderTruncatedFooter = (handlePress) => {
-    return (
-      <Text style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
-        Read more
-      </Text>
-    );
-  }
- 
-  let _renderRevealedFooter = (handlePress) => {
-    return (
-      <Text style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
-        Show less
-      </Text>
-    );
-  }
- 
-  let _handleTextReady = () => {
-  }
 
   return (
     <View style={styles.postContainer}>
@@ -67,16 +44,8 @@ export default function Post(props) {
         />
       </View>
       <View style={styles.descriptionContainer}>
-        {/* <Text numberOfLines={4} style={styles.description}>{description}</Text>
-        <Text style={{ color: "red" }}>Continue Reading</Text> */}
-        <ReadMore
-          numberOfLines={4}
-          renderTruncatedFooter={_renderTruncatedFooter}
-          renderRevealedFooter={_renderRevealedFooter}
-          onReady={_handleTextReady}
-        >
-          <Text style={styles.description}>{description}</Text>
-        </ReadMore>
+        <Text numberOfLines={4} style={styles.description}>{description}</Text>
+        <Text style={{ color: "red" }}>Continue Reading</Text>
       </View>
       <View style={styles.divider} />
       <View style={styles.postMeta}>
@@ -96,7 +65,7 @@ export default function Post(props) {
               source={require("../assets/comment.png")}
             />
             <Text style={[styles.iconText, styles.secondaryHeading]}>
-              {comment}
+              {comments}
             </Text>
           </View>
         </View>

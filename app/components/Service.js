@@ -38,9 +38,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   service: {
-    maxWidth: 190,
+    width: "48%",
     height: 100,
-    marginVertical: 3,
+    marginVertical: "2%",
     borderRadius: 10,
     overflow: "hidden",
   },

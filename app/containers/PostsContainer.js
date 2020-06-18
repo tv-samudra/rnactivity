@@ -7,7 +7,7 @@ export default function PostContainer() {
   return (
     <FlatList>
       {Dummydata.posts.map((post, key) => (
-        <Post {...post} key={key} />
+        <Post {...post} key={key} id={key}/>
       ))}
     </FlatList>
   );
