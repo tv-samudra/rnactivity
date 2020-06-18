@@ -3,16 +3,15 @@ import {
   StyleSheet,
   Text,
   StatusBar,
-  FlatList,
   View,
   Image,
   ImageBackground,
 } from "react-native";
+import ReadMore from "react-native-read-more-text";
 
 let statusHeight = StatusBar.currentHeight;
 
 export default function Post(props) {
-  console.log(props);
   let {
     item: {
       avatar,
@@ -25,6 +24,25 @@ export default function Post(props) {
       views,
     },
   } = props;
+
+  let _renderTruncatedFooter = (handlePress) => {
+    return (
+      <Text style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
+        Read more
+      </Text>
+    );
+  }
+ 
+  let _renderRevealedFooter = (handlePress) => {
+    return (
+      <Text style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
+        Show less
+      </Text>
+    );
+  }
+ 
+  let _handleTextReady = () => {
+  }
 
   return (
     <View style={styles.postContainer}>
@@ -49,8 +67,16 @@ export default function Post(props) {
         />
       </View>
       <View style={styles.descriptionContainer}>
-        <Text numberOfLines={4} style={styles.description}>{description}</Text>
-        <Text style={{ color: "red" }}>Continue Reading</Text>
+        {/* <Text numberOfLines={4} style={styles.description}>{description}</Text>
+        <Text style={{ color: "red" }}>Continue Reading</Text> */}
+        <ReadMore
+          numberOfLines={4}
+          renderTruncatedFooter={_renderTruncatedFooter}
+          renderRevealedFooter={_renderRevealedFooter}
+          onReady={_handleTextReady}
+        >
+          <Text style={styles.description}>{description}</Text>
+        </ReadMore>
       </View>
       <View style={styles.divider} />
       <View style={styles.postMeta}>
@@ -60,14 +86,18 @@ export default function Post(props) {
               style={styles.iconBarIcon}
               source={require("../assets/heart.png")}
             />
-            <Text style={[styles.iconText,styles.secondaryHeading]}>{likes}</Text>
+            <Text style={[styles.iconText, styles.secondaryHeading]}>
+              {likes}
+            </Text>
           </View>
           <View style={styles.iconWithText}>
             <Image
               style={styles.iconBarIcon}
               source={require("../assets/comment.png")}
             />
-            <Text style={[styles.iconText,styles.secondaryHeading]}>{comment}</Text>
+            <Text style={[styles.iconText, styles.secondaryHeading]}>
+              {comment}
+            </Text>
           </View>
         </View>
         <View style={styles.rightIcon}>
@@ -76,7 +106,9 @@ export default function Post(props) {
               style={styles.iconBarIcon}
               source={require("../assets/eye.png")}
             />
-            <Text style={[styles.iconText,styles.secondaryHeading]}>Views : ({views})</Text>
+            <Text style={[styles.iconText, styles.secondaryHeading]}>
+              Views : ({views})
+            </Text>
           </View>
         </View>
       </View>
