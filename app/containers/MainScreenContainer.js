@@ -25,6 +25,7 @@ export default function MainScreen() {
     <>
       <View style={styles.container}>
         <FlatList
+          contentContainerStyle = {{marginBottom:100}}
           ListHeaderComponent={
             <>
               <Header title={"Activity"} />
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "transparent",
-    marginTop: statusHeight + 15,
+    marginTop: statusHeight +10,
     justifyContent: "flex-start",
   },
 });

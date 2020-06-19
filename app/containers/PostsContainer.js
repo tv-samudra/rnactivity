@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "tomato",
     justifyContent: "flex-start",
-    marginVertical : 15
+    marginVertical : 10,
   },
 });

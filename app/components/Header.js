@@ -11,9 +11,11 @@ export default function Header({ title = "Title" }) {
 
 const styles = StyleSheet.create({
   heading: {
-    fontSize: 26,
+    fontSize: 28,
+    letterSpacing : 0.5,
+    fontFamily : "Poppins",
     color: "#212121",
     fontWeight: "bold",
-    padding: 15,
+    padding: 10,
   },
 });

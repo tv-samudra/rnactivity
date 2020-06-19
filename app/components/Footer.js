@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import { StyleSheet, View, ImageBackground } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 let footerBg = require("../assets/path.png");
 let compassIcon = require("../assets/compass.png");
@@ -9,38 +10,46 @@ let userIcon = require("../assets/user.png");
 
 export default function Footer() {
   return (
-    <View style={styles.container}>
-      <View style={styles.iconBar}>
-        <View style={styles.imageDisplay}>
-          <ImageBackground
-            source={compassIcon}
-            style={{ flex: 1 }}
-            resizeMode="contain"
-          />
+    <LinearGradient
+      colors={["rgba(255,255,255,0)","rgba(255,255,255,0.3)","rgba(255,255,255,0.9)","rgba(255,255,255,1)"]}
+      style={{
+        position: "absolute",
+        width : "100%",
+        bottom :0,
+        height :150,paddingVertical : 15
+      }}
+    >
+        <View style={styles.iconBar}>
+          <View style={styles.imageDisplay}>
+            <ImageBackground
+              source={compassIcon}
+              style={{ flex: 1 }}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.imageDisplay}>
+            <ImageBackground
+              source={searchIcon}
+              style={{ flex: 1 }}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.imageDisplay}>
+            <ImageBackground
+              source={mailIcon}
+              style={{ flex: 1 }}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.imageDisplay}>
+            <ImageBackground
+              source={userIcon}
+              style={{ flex: 1 }}
+              resizeMode="contain"
+            />
+          </View>
         </View>
-        <View style={styles.imageDisplay}>
-          <ImageBackground
-            source={searchIcon}
-            style={{ flex: 1 }}
-            resizeMode="contain"
-          />
-        </View>
-        <View style={styles.imageDisplay}>
-          <ImageBackground
-            source={mailIcon}
-            style={{ flex: 1 }}
-            resizeMode="contain"
-          />
-        </View>
-        <View style={styles.imageDisplay}>
-          <ImageBackground
-            source={userIcon}
-            style={{ flex: 1 }}
-            resizeMode="contain"
-          />
-        </View>
-      </View>
-    </View>
+    </LinearGradient>
   );
 }
 
