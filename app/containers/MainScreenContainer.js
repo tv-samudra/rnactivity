@@ -12,6 +12,7 @@ import Services from "./ServicesContainer";
 import CreatePost from "./CreatePostContainer";
 import dummydata from "../dummydata";
 import Post from "../components/Post";
+import Footer from "../components/Footer";
 
 let statusHeight = StatusBar.currentHeight;
 
@@ -21,27 +22,30 @@ export default function MainScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Header title={"Activity"} />
-      <FlatList
-        ListHeaderComponent={
-          <>
-            <Services />
-            <CreatePost />
-          </>
-        }
-        data={dummydata.posts}
-        renderItem={posts}
-      ></FlatList>
-    </View>
+    <>
+      <View style={styles.container}>
+        <FlatList
+          ListHeaderComponent={
+            <>
+              <Header title={"Activity"} />
+              <Services />
+              <CreatePost />
+            </>
+          }
+          data={dummydata.posts}
+          renderItem={posts}
+        ></FlatList>
+      </View>
+      <Footer />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    marginTop: statusHeight,
+    backgroundColor: "transparent",
+    marginTop: statusHeight + 15,
     justifyContent: "flex-start",
   },
 });

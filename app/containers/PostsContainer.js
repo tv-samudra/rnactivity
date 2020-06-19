@@ -5,7 +5,7 @@ import Dummydata from "../dummydata";
 
 export default function PostContainer() {
   return (
-    <FlatList>
+    <FlatList style={styles.container}>
       {Dummydata.posts.map((post, key) => (
         <Post {...post} key={key} id={key}/>
       ))}
@@ -16,7 +16,8 @@ export default function PostContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "tomato",
     justifyContent: "flex-start",
+    marginVertical : 15
   },
 });

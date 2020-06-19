@@ -1,24 +1,19 @@
 import React from "react";
-import { StyleSheet, View, Text, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+} from "react-native";
 
-const Backgrounds = [
-  require("../assets/orange.png"),
-  require("../assets/gold.png"),
-  require("../assets/brick.png"),
-  require("../assets/darkblue.png"),
-  require("../assets/darkviolet.png"),
-  require("../assets/lightviolet.png"),
-];
 
-export default function Service({ pending = 0, totalCount = 0, name = "" }) {
-  /**get a random background from available backgrounds */
-  let background =
-    Backgrounds[Math.floor(Math.random() * Backgrounds.length )];
+export default function Service({ pending = 0, totalCount = 0, name = "" ,imageUri}) {
+ 
   return (
     <View style={styles.service}>
       <ImageBackground
         resizeMode="contain"
-        source={background}
+        source={imageUri}
         style={styles.background}
       >
         <View style={styles.flexed}>
@@ -38,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   service: {
-    width: "48%",
+    width: "45%",
     height: 100,
     marginVertical: "2%",
     borderRadius: 10,
@@ -46,25 +41,27 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    padding: 15,
+    paddingLeft: 15,
+    paddingVertical : 10
   },
   pending: {
     position: "absolute",
     paddingVertical: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     borderRadius: 50,
     backgroundColor: "rgba(255,255,225,0.2)",
+    top : 5,
     right: 10,
   },
   textWhite: {
     fontSize: 12,
     fontWeight: "bold",
-    color: "#efefef",
+    color: "#FFFFFF",
   },
   totalCount: {
     fontSize: 22,
   },
   serviceName: {
-    fontSize: 15,
+    fontSize: 16,
   },
 });
