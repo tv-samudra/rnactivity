@@ -1,8 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import dummydata from "../dummydata";
 
 export default function Post(props) {
   let {
+    index,
     item: {
       avatar,
       postedBy,
@@ -16,7 +18,7 @@ export default function Post(props) {
   } = props;
 
   return (
-    <View style={styles.postContainer}>
+    <View style={[styles.postContainer,{marginBottom: index===dummydata.posts.length -1? 150 : 0}]}>
       <View style={styles.header}>
         <View style={styles.avatarContainer}>
           <ImageBackground
@@ -39,7 +41,8 @@ export default function Post(props) {
       </View>
       <View style={styles.descriptionContainer}>
         <Text numberOfLines={4} style={styles.description}>
-          {description}<Text style={{ color: "red" }}>Continue Reading</Text> 
+          {description}
+          <Text style={{ color: "red" }}>Continue Reading</Text>
         </Text>
       </View>
       <View style={styles.divider} />
@@ -53,7 +56,13 @@ export default function Post(props) {
                 source={require("../assets/heart.png")}
               />
             </View>
-            <Text style={[styles.iconText, styles.secondaryHeading,{color:"tomato"}]}>
+            <Text
+              style={[
+                styles.iconText,
+                styles.secondaryHeading,
+                { color: "tomato" },
+              ]}
+            >
               {likes}
             </Text>
           </View>
@@ -79,7 +88,7 @@ export default function Post(props) {
                 source={require("../assets/eye.png")}
               />
             </View>
-            <Text style={[styles.secondaryHeading,styles.iconText]}>
+            <Text style={[styles.secondaryHeading, styles.iconText]}>
               Views : ({views})
             </Text>
           </View>
@@ -101,7 +110,7 @@ const styles = StyleSheet.create({
   iconHolder: {
     width: 20,
     height: null,
-    marginRight : 2
+    marginRight: 2,
   },
   leftIcons: {
     flexDirection: "row",
@@ -109,8 +118,8 @@ const styles = StyleSheet.create({
   rightIcon: {},
   iconWithText: {
     flexDirection: "row",
-    alignContent:"center",
-    marginRight : 15
+    alignContent: "center",
+    marginRight: 15,
   },
   iconText: {
     marginHorizontal: 5,
@@ -139,10 +148,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#3B86E0",
     fontWeight: "bold",
+    letterSpacing: 0.5,
   },
   secondaryHeading: {
     color: "#BDBDBD",
     fontWeight: "600",
+    letterSpacing: 0.5,
   },
   imageDisplay: {},
   descriptionContainer: {
@@ -150,14 +161,15 @@ const styles = StyleSheet.create({
   },
   description: {
     color: "#707070",
-    fontSize: 14,
-    lineHeight: 22,
+    fontSize: 16,
+    lineHeight: 23,
+    letterSpacing: 0.5,
     fontWeight: "600",
   },
   postMeta: {
     justifyContent: "space-between",
     flexDirection: "row",
-    paddingVertical: 20,
+    paddingVertical: 25,
     marginHorizontal: 10,
   },
   divider: {
